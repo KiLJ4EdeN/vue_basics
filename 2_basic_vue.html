@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Vue JS Basics
+        </title>
+    </head>
+    <body>
+        <!-- give id to the app so that vue can put elements here-->
+        <div id="app">
+            <!-- Unload vars like any templating language -->
+            {{ greeting }}
+        </div>
+    </body>
+
+        <!-- This is how we load vue -->
+        <script src="https://unpkg.com/vue@next"></script>
+
+        <!-- Here add the vue script for the app-->
+        <script>
+            // create the vue app with the options object passed
+            let app = Vue.createApp({
+                // data is a function that returns something
+                // data: function() {
+                data() {
+                    return {
+                        greeting: 'Hello Vue 3!'
+                    }
+                }
+            })
+            // mount the app on the div
+            app.mount('#app')
+        </script>
+
+</html>

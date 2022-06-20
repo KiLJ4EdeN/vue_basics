@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Vue JS Basics
+        </title>
+        <style>
+            .box1 {
+                background-color: purple;
+                height: 200px;
+                width: 200px;
+            }
+            .box2 {
+                background-color: green;
+                height: 200px;
+                width: 200px;
+            }
+            .box3 {
+                background-color: red;
+                height: 200px;
+                width: 200px;
+            }
+            [v-cloak] {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- give id to the app so that vue can put elements here-->
+        <!-- use v-cloak to wait loading -->
+        <div id="app" v-cloak>
+            <!-- Unload vars like any templating language -->
+            {{ greeting }}
+            <input v-model="greeting"/>
+
+            <hr />
+            
+            <!-- v-if or v-show -->
+            <div v-if="isVisible1" class="box1"></div>
+            <div v-else-if="isVisible2" class="box2"></div>
+            <div v-else class="box3"></div>
+
+        </div>
+    </body>
+
+        <!-- This is how we load vue -->
+        <script src="https://unpkg.com/vue@next"></script>
+
+        <!-- Here add the vue script for the app-->
+        <script>
+            // create the vue app with the options object passed
+            let app = Vue.createApp({
+                // data is a function that returns something
+                // data: function() {
+                data() {
+                    return {
+                        greeting: 'Hello Vue 3!',
+                        isVisible1: false,
+                        isVisible2: true,
+                    }
+                }
+            })
+            // mount the app on the div
+            app.mount('#app')
+        </script>
+
+</html>
