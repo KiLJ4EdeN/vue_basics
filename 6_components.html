@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Vue JS Basics
+        </title>
+        <style>
+            input {
+                margin: 10px;
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <!-- custom element , defined in vue later -->
+            <login-form />
+        </div>
+    </body>
+
+        <!-- This is how we load vue -->
+        <script src="https://unpkg.com/vue@next"></script>
+
+        <!-- Here add the vue script for the app-->
+        <script>
+            // create the vue app with the options object passed
+            let app = Vue.createApp({
+                // data is a function that returns something
+                // data: function() {
+                data() {
+                    return {
+                        greeting: 'Hello Vue 3!',
+                        isVisible: false,
+                    }
+                },
+                // this is an object consisting of functions
+                methods: {
+                    toggleBox() {
+                        this.isVisible = !this.isVisible
+                    },
+                    greet() {
+                        console.log(this.greeting)
+                    }
+                }
+            })
+            
+            app.component('login-form', {
+                template: `
+                    <form @submit.prevent="handleSubmit">
+                        <h1> {{ title }} </h1>
+                        <input type="email" v-model="email" />
+                        <input type="password" v-model="password" />
+                        <button> log in </button>
+                    </form>
+                `,
+                // has its own data to be used inside the template
+                data() {
+                    return {
+                        title: 'Login Form',
+                        email: '',
+                        password: '',
+                    }
+                },
+                methods: {
+                    handleSubmit() {
+                        console.log(this.email, this.password)
+                    }
+                }
+            })
+
+            app.mount('#app')
+        </script>
+
+</html>
